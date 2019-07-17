@@ -3,9 +3,7 @@ package com.androidabcd.ashokslsk.depeinje.di;
 import android.app.Application;
 
 import com.androidabcd.ashokslsk.depeinje.BaseApplication;
-
 import javax.inject.Singleton;
-
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjector;
@@ -20,7 +18,6 @@ public interface AppComponent extends AndroidInjector<BaseApplication> {
 
         @BindsInstance
         Builder application(Application application);
-
         AppComponent build();
     }
 }
