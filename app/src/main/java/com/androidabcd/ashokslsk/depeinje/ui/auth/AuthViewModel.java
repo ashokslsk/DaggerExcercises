@@ -2,22 +2,21 @@ package com.androidabcd.ashokslsk.depeinje.ui.auth;
 
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.LiveDataReactiveStreams;
+import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
-
 import com.androidabcd.ashokslsk.depeinje.models.User;
 import com.androidabcd.ashokslsk.depeinje.network.auth.AuthAPI;
-
 import javax.inject.Inject;
-
-import io.reactivex.Observer;
-import io.reactivex.Scheduler;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class AuthViewModel extends ViewModel {
 
     private static final String TAG = "AuthViewModel";
     private final AuthAPI authAPI;
+    private MediatorLiveData<User> authUser = new MediatorLiveData<>();
 
     @Inject
     public AuthViewModel(AuthAPI authAPI) {
@@ -28,30 +27,22 @@ public class AuthViewModel extends ViewModel {
         }else{
             Log.d(TAG, "AuthViewModel: auth api is working");
         }
+    }
 
-        authAPI.getUser(1)
-                .toObservable()
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<User>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
+    public void authenticationWithId(int userId){
+        final LiveData<User> source = LiveDataReactiveStreams.fromPublisher(
+                authAPI.getUser(userId)
+                .subscribeOn(Schedulers.io()));
+        authUser.addSource(source, new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                authUser.setValue(user);
+                authUser.removeSource(source);
+            }
+        });
+    }
 
-                    }
-
-                    @Override
-                    public void onNext(User user) {
-                        Log.d(TAG, "onNext: "+user.getEmail());
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+    public LiveData<User> observeUser(){
+        return authUser;
     }
 }
