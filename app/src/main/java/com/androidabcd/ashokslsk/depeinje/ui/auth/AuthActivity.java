@@ -1,5 +1,6 @@
 package com.androidabcd.ashokslsk.depeinje.ui.auth;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.androidabcd.ashokslsk.depeinje.R;
 import com.androidabcd.ashokslsk.depeinje.models.User;
+import com.androidabcd.ashokslsk.depeinje.ui.main.MainActivity;
 import com.androidabcd.ashokslsk.depeinje.viewmodels.ViewModelProvidersFactory;
 import com.bumptech.glide.RequestManager;
 
@@ -73,6 +75,7 @@ public class AuthActivity extends DaggerAppCompatActivity {
                     switch (userAuthResource.status) {
                         case AUTHENTICATED:
                             showProgressBar(false);
+                            onLoginSuccess();
                             Log.d(TAG, "onChanged: login success "+userAuthResource.data.getEmail());
                             break;
                         case ERROR:
@@ -103,5 +106,11 @@ public class AuthActivity extends DaggerAppCompatActivity {
         requestManager
                 .load(logo)
                 .into((ImageView) findViewById(R.id.login_logo));
+    }
+
+    private void onLoginSuccess(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

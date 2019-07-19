@@ -30,7 +30,8 @@ dependencies {
     implementation "com.google.dagger:dagger:$dagger_version"
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.dagger:dagger-android:$dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger_version" // if you use the support libraries
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    // if you use the support libraries
     annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
 
     def material_version = "1.0.0"
@@ -55,7 +56,8 @@ dependencies {
 
     // Rx-Retrofit Call Adapter
     def rxcalladapter_version = '2.5.0'
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxcalladapter_version" // Retrofit call adapter
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxcalladapter_version"
+    // Retrofit call adapter
 
     // Reactive Streams (convert Observable to LiveData)
     def reactivestreams_version = "1.1.1"
