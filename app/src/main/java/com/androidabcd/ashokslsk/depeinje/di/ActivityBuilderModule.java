@@ -3,6 +3,7 @@ package com.androidabcd.ashokslsk.depeinje.di;
 import com.androidabcd.ashokslsk.depeinje.di.auth.AuthModule;
 import com.androidabcd.ashokslsk.depeinje.di.auth.AuthViewModelsModule;
 import com.androidabcd.ashokslsk.depeinje.di.main.MainFragmentsBuildersModule;
+import com.androidabcd.ashokslsk.depeinje.di.main.MainViewModelsModule;
 import com.androidabcd.ashokslsk.depeinje.ui.auth.AuthActivity;
 import com.androidabcd.ashokslsk.depeinje.ui.main.MainActivity;
 
@@ -16,7 +17,7 @@ public abstract class ActivityBuilderModule {
     abstract AuthActivity contributeActivity();
 
     @ContributesAndroidInjector(
-            modules = {MainFragmentsBuildersModule.class}
+            modules = {MainFragmentsBuildersModule.class, MainViewModelsModule.class}
     )
     abstract MainActivity contributeMainActivity();
 
