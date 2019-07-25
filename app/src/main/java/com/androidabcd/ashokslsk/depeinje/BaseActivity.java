@@ -46,6 +46,7 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
                             break;
                         case NOT_AUTHENTICATED:
                             Log.d(TAG, "onChanged: ");
+                            navLoginScreen();
                             break;
                     }
                 }

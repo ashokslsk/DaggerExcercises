@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Depeinje</string>
+    <string name="logout">Logout</string>
 </resources>
