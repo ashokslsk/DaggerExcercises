@@ -8,7 +8,9 @@ import androidx.lifecycle.Observer;
 import com.androidabcd.ashokslsk.depeinje.models.User;
 import com.androidabcd.ashokslsk.depeinje.ui.auth.AuthResource;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class SessionManager {
     private static final String TAG = "SessionManager";
     private MediatorLiveData<AuthResource<User>> cachedUser = new MediatorLiveData<>();
