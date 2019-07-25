@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 import com.androidabcd.ashokslsk.depeinje.BaseActivity;
 import com.androidabcd.ashokslsk.depeinje.R;
-import com.androidabcd.ashokslsk.depeinje.ui.main.profile.ProfileFragment;
+import com.androidabcd.ashokslsk.depeinje.ui.main.posts.PostsFragments;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
@@ -23,7 +23,7 @@ public class MainActivity extends BaseActivity {
 
     private void testFragment(){
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_container, new ProfileFragment())
+                .replace(R.id.main_container, new PostsFragments())
                 .commit();
     }
 
