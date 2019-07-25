@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import com.androidabcd.ashokslsk.depeinje.BaseActivity;
 import com.androidabcd.ashokslsk.depeinje.R;
+import com.androidabcd.ashokslsk.depeinje.ui.main.profile.ProfileFragment;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
@@ -17,6 +18,13 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        testFragment();
+    }
+
+    private void testFragment(){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_container, new ProfileFragment())
+                .commit();
     }
 
     @Override
